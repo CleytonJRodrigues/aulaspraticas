@@ -3,14 +3,18 @@ package br.ufrpe.social_network.negocio.beans;
 import java.util.ArrayList;
 
 public class Post {
-    
+	
+	private static long nextId = 1;
+	
     private long id;
     private String texto;
     private Person author;
     private ArrayList<Post> comments;
 
     public Post(String texto, Person author) {
-        // TODO Implementar a mesma estratégia da classe Person para geração de ID  
+        // DONE Implementar a mesma estratégia da classe Person para geração de ID
+    	this.id = nextId;
+    	nextId++;
         
         this.texto = texto;
         this.author = author;
@@ -21,7 +25,7 @@ public class Post {
         this(null, null);
     }
 
-    // TODO gerar todos os métodos get/set, exceto o setId
+    // DONE gerar todos os métodos get/set, exceto o setId
     
     public String getTexto() {
     	
@@ -55,10 +59,9 @@ public class Post {
     }
     
     public void removeComment(Long id) {
-        // TODO remover comentário da lista de comentários se ele existir. 
+        // DONE remover comentário da lista de comentários se ele existir. 
         // Você deve varrer a lista inteira verificando se há algum 
         // comentário com o ID informado como parâmetro e então removê-lo
-    	
     	
     	for(int i = 0 ; i < this.comments.size(); i++) {
     		
@@ -66,13 +69,12 @@ public class Post {
     			
     			this.comments.remove(i);
     		}
-    		
     	}
     }
     
     @Override
     public String toString() {
-        // TODO Implementar método toString da classe Person
+        // DONE Implementar método toString da classe Person
     	return String.format("%s\n%s", this.author.toString(), this.texto);
     }
 }

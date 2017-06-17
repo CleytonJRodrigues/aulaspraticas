@@ -10,6 +10,7 @@ public class PersonController {
     
     private PersonController() {
         // Construtor privado para implementação de singleton
+    	this.personsRepository = PersonDAO.getInstance();
     }
 
     public static PersonController getInstance() {
@@ -20,19 +21,22 @@ public class PersonController {
     }
     
     public void savePerson(Person p) {
-        // TODO Método que salva pessoa no repositório
+        // DONE Método que salva pessoa no repositório
+    	this.personsRepository.save(p);
     }
     
-    public Person find(long personId) {
-        // TODO Retorna o objeto do tipo Person que contenha aquele ID
-        return null;
+    public Person findPerson(long personId) {
+        // DONE Retorna o objeto do tipo Person que contenha aquele ID
+       return personsRepository.find(personId);
     }
     
-    public void update(Person newPerson) {
-        //TODO Encontra no repositório obj que tenha id igual a newPerson.id e atualiza objeto 
+    public void updatePerson(Person newPerson) {
+        //DONE Encontra no repositório obj que tenha id igual a newPerson.id e atualiza objeto 
+    	this.personsRepository.update(newPerson);
     }
     
-    public void delete(Person p) {
-        // TODO apaga do repositório objeto que contenha o id igual a p.id 
+    public void deletePerson(Person p) {
+        // DONE apaga do repositório objeto que contenha o id igual a p.id 
+    	this.personsRepository.delete(p);
     }
 }

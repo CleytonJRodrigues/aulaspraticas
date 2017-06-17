@@ -1,5 +1,11 @@
 package br.ufrpe.social_network.gui;
 
+import java.time.LocalDate;
+
+import br.ufrpe.social_network.negocio.Fachada;
+import br.ufrpe.social_network.negocio.beans.Person;
+import br.ufrpe.social_network.negocio.beans.Post;
+
 public class TextualUserInterface {
     
     public void showUserInterface() {
@@ -17,7 +23,31 @@ public class TextualUserInterface {
         8.  (DESAFIO) Liste somente os comentários que cada uma das pessoas fez em outros posts de outras pessoas
 
         */
-        
+    	
+    	Fachada fachada = Fachada.getInstance();
+    	
+    	Person a = new Person("Mary-ann", "USA", LocalDate.of(1996, 05, 16));
+    	Person b = new Person("Carlos", "BRA", LocalDate.of(1996, 05, 16));
+    	Person c = new Person("González", "ESP", LocalDate.of(1996, 05, 16));
+    	Person d = new Person("Lara", "MAL", LocalDate.of(1996, 05, 16));
+    	
+    	fachada.savePerson(a);
+    	fachada.savePerson(b);
+    	fachada.savePerson(c);
+    	fachada.savePerson(d);
+    	
+    	fachada.deletePerson(b);
+    	
+    	d.setName("Lára");
+    	fachada.updatePerson(d);
+    	
+    	fachada.findPerson(3);
+    	
+    	//Mary
+    	Post a1 = new Post("Hi", a);
+    	Post a2 = new Post("Im ok", a);
+    	
+    	// todo não completo...
     }
 
 }
